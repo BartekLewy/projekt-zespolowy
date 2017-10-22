@@ -10,6 +10,10 @@ import { LoginComponent } from './login/login.component';
 
 import { AuthGuard } from "./auth.guard";
 import { UserService } from "./user.service";
+import { ProductsComponent } from './products/products.component';
+import { CartComponent } from './cart/cart.component';
+import { DiscountComponent } from './discount/discount.component';
+import { HeaderComponent } from './header/header.component';
 
 const appRoutes: Routes = [
   {
@@ -26,7 +30,11 @@ const appRoutes: Routes = [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    ProductsComponent,
+    CartComponent,
+    DiscountComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
