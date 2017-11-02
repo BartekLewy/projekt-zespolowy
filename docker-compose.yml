@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+    backend:
+        build:
+            context: backend
+            dockerfile: Dockerfile
+        command: bash -c "npm install && gulp build && gulp"
+        volumes:
+            - ./backend/:/code/
+            - ./logs:/logs
+        ports:
+            - "8000:8000"
+
+    frontend:
+        build:
+            context: web
+            dockerfile: Dockerfile
+        command: bash -c "npm install && npm start"
+        volumes:
+            - ./web/:/code/
+        ports:
+            - "80:4200"
