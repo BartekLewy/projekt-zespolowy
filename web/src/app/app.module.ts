@@ -14,7 +14,9 @@ import { HeaderComponent } from './header/header.component';
 import { AuthGuard } from "./auth.guard";
 import { UserService } from "./user.service";
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { RegulationsComponent } from './regulations/regulations.component'
 
 const appRoutes: Routes = [
   {
@@ -24,7 +26,8 @@ const appRoutes: Routes = [
   },
   { path: '', component: ProductsComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'regulations', component: RegulationsComponent }
 ];
 
 @NgModule({
@@ -36,7 +39,9 @@ const appRoutes: Routes = [
     ProductsComponent,
     CartComponent,
     DiscountComponent,
-    HeaderComponent
+    HeaderComponent,
+    BreadcrumbsComponent,
+    RegulationsComponent
   ],
   imports: [
     BrowserModule,

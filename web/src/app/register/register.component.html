@@ -1,3 +1,37 @@
-<p>
-  register works!
-</p>
+<div class="container">
+  <h4>Wypełnij formularz rejestarcyjny aby założyć konto w naszym sklepie</h4>
+  <hr>
+  <form id="register-form">
+    <div class="form-group row">
+      <label for="register-form-firstname" class="col-2 col-form-label">Imię</label>
+      <input id="register-form-firstname" type="text" class="col-10 form-control form-control-sm" placeholder="Podaj swoje imię">
+    </div>
+    <div class="form-group row">
+      <label for="register-form-lastname" class="col-2 col-form-label">Nazwisko</label>
+      <input id="register-form-lastname" type="text" class="col-10 form-control form-control-sm" placeholder="Podaj swoje nazwisko">
+    </div>
+    <div class="form-group row">
+      <label for="register-form-login" class="col-2 col-form-label">Login</label>
+      <input id="register-form-login" type="text" class="col-10 form-control form-control-sm" placeholder="Login powinien zawierać co najmniej 3 znaki">
+    </div>
+    <div class="form-group row">
+      <label for="register-form-email" class="col-2 col-form-label">Email</label>
+      <input id="register-form-email" type="email" class="col-10 form-control form-control-sm" placeholder="Wprowadź poprawny adres e-mail">
+    </div>
+    <div class="form-group row">
+      <label for="register-form-first-password" class="col-2 col-form-label">Hasło</label>
+      <input id="register-form-first-password" type="password" class="col-10 form-control form-control-sm" placeholder="Hasło powinno składać się z conajmniej 8. znaków, zawierać duże i małe litery oraz conajmniej jedną cyfrę">
+    </div>
+    <div class="form-group row">
+      <label for="register-form-second-password" class="col-2 col-form-label">Powtórz hasło</label>
+      <input id="register-form-second-password" type="password" class="col-10 form-control form-control-sm" placeholder="Potwierdź swoje hasło">
+    </div>
+    <div class="form-group row">
+      <label for="register-form-address" class="col-2 col-form-label">Adres</label>
+      <textarea id="register-form-address" class="form-control col-10" placeholder="ul. Dworcowa 100, m.40, 00-000 Warszawa"></textarea>
+    </div>
+    <div class="btn-group text-right">
+      <button class="btn btn-primary">Zarejestruj</button>
+    </div>
+  </form>
+</div>
