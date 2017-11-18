@@ -1,0 +1,125 @@
+swagger: "2.0"
+info:
+  description: "API do serwerowej części projektu zespołowego w ramach I roku studiów magisterskich zaocznych na kierunku Informatyka na UG"
+  version: "1.0.0"
+  title: "Projekt zespołowy"
+host: "0.0.0.0:8000"
+basePath: "/"
+tags:
+  - name: "Użytkownicy"
+    description: "Osoby korzystające ze sklepu"
+  - name: "Operator"
+    description: "Osoba zarządzająca sklepem"
+schemes:
+  - "http"
+paths:
+  /register:
+    post:
+      tags:
+        - "Użytkownicy"
+      summary: "Dodanie nowego użytkownika do sklepu"
+      description: ""
+      operationId: "addUser"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Dane użytkownika który zakłada konto w sklepie"
+          required: true
+          schema:
+            $ref: "#/definitions/User"
+      responses:
+        400:
+          description: "Jeśli nazwa użytkownika/email już używane lub dane nie przechodzą walidacji"
+          schema:
+            type: "object"
+            properties:
+              problem:
+                type: "string"
+                example: "duplicated"
+              field:
+                type: "string"
+                example: "username"
+  /login:
+    post:
+      tags:
+          - "Użytkownicy"
+      summary: "Zalogowanie użytkownika"
+      description: ""
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Dane logowania użytkownika"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              username:
+                type: "string"
+                example: "jankowalski"
+              password:
+                type: "string"
+                example: "supertajne"
+      responses:
+        200:
+          description: "Wszystko poszło dobrze, w ciele zwrotki token"
+        401:
+          description: "Jeśli podano niepoprawne dane do logowania"
+  /operator/register:
+    post:
+      tags:
+        - "Operator"
+      summary: "Dodanie nowego operatora do sklepu"
+      description: ""
+      operationId: "addOperator"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Dane operatora zakładającego konto"
+          required: true
+          schema:
+            $ref: "#/definitions/User"
+      responses:
+        400:
+          description: "Jeśli nazwa użytkownika/email już używane lub dane nie przechodzą walidacji"
+          schema:
+            type: "object"
+            properties:
+              problem:
+                type: "string"
+                example: "duplicated"
+              field:
+                type: "string"
+                example: "username"
+
+
+
+definitions:
+  User:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      street:
+        type: "string"
+      localNumber:
+        type: "string"
+      city:
+        type: "string"
+      postalCode:
+        type: "string"
+      country:
+        type: "string"
+      phone:
+        type: "string"

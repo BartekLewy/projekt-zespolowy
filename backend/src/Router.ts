@@ -1,8 +1,10 @@
 import * as express from 'express';
-import {Router as TestRouter} from "./Test/Router";
+import {AuthenticationController} from "./Controllers/AuthenticationController";
 
 export class Router {
     static setupRoutes(router: express.Router) {
-        TestRouter.setupRoutes(router, '/test');
+        router.post("/register", AuthenticationController.AddUser);
+        router.post("/login", AuthenticationController.Login);
+        router.post("/operator/register", AuthenticationController.AddOperator);
     }
 }
