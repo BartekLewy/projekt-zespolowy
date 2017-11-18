@@ -1,3 +1,19 @@
-<p>
-  products works!
-</p>
+<div class="container">
+  <div class="row">
+    <div *ngFor="let product of products" class="col-lg-4 col-md-6 mb-4 product-card">
+      <div class="card">
+        <a href="#">
+          <img class="card-img-top" src="#" alt="">
+        </a>
+        <div class="card-body">
+          <h4 class="cart-title">{{product.name}}</h4>
+          <h5 class="text-success text-right">{{product.price}} {{product.currency}}</h5>
+          <p class="card-text"></p>
+        </div>
+        <div class="card-footer">
+          <a href="">Dodaj do koszyka</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
