@@ -1,0 +1,468 @@
+{
+	"id": "e59292fc-14d0-7f6e-68cd-91c6d2fc8097",
+	"name": "Projekt zespołowy",
+	"description": "",
+	"order": [
+		"8e0dd769-a34f-763c-de1e-182952ab44a9"
+	],
+	"folders": [
+		{
+			"name": "Category",
+			"description": "",
+			"collectionId": "e59292fc-14d0-7f6e-68cd-91c6d2fc8097",
+			"order": [
+				"e3325adc-a549-c26b-d522-df33484e135a",
+				"8f4a829d-1a4f-5e02-b48a-5a634a440c90",
+				"7024b37a-1bcc-d249-465f-0d4b2b57da7a",
+				"ac20e073-da8c-c2b2-2e50-4ce2c03550b3",
+				"d7399816-18a2-3a7f-1359-97dd2a71db79"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "88e53df9-46bc-7db5-6daa-cca05d8d55f5"
+		},
+		{
+			"name": "Order",
+			"description": "",
+			"collectionId": "e59292fc-14d0-7f6e-68cd-91c6d2fc8097",
+			"order": [
+				"08da95c7-d9ad-99dd-4fb0-6ec041d70cfb"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "ba1f4e85-14ff-8d44-c349-d368aad4a9f2"
+		},
+		{
+			"name": "Product",
+			"description": "",
+			"collectionId": "e59292fc-14d0-7f6e-68cd-91c6d2fc8097",
+			"order": [
+				"2b2630f1-b114-b0ab-113d-a06d0f83f9f0",
+				"c62f00eb-4383-7f16-3d66-c09b3218ac6d",
+				"0a750478-e959-e615-7cbc-9bb1810e1b18",
+				"5b4ad4db-2bc1-95af-84f0-72a048bc1bec",
+				"25dd5e4f-1265-f99a-e572-7ad052b1fb80"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "b90579f8-5537-e0e2-cc13-7ad8b5b5ea32"
+		},
+		{
+			"name": "User",
+			"description": "",
+			"collectionId": "e59292fc-14d0-7f6e-68cd-91c6d2fc8097",
+			"order": [],
+			"owner": 0,
+			"folders_order": [],
+			"id": "f7073cfb-e28a-b9ea-306e-0a8309270706"
+		}
+	],
+	"folders_order": [
+		"b90579f8-5537-e0e2-cc13-7ad8b5b5ea32",
+		"f7073cfb-e28a-b9ea-306e-0a8309270706",
+		"ba1f4e85-14ff-8d44-c349-d368aad4a9f2",
+		"88e53df9-46bc-7db5-6daa-cca05d8d55f5"
+	],
+	"timestamp": 1511030089723,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "08da95c7-d9ad-99dd-4fb0-6ec041d70cfb",
+			"headers": "",
+			"headerData": [],
+			"url": "{{url}}/order",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "e59292fc-14d0-7f6e-68cd-91c6d2fc8097",
+			"data": null,
+			"dataMode": "params",
+			"name": "GetAllOrders",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1511098848550,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "ba1f4e85-14ff-8d44-c349-d368aad4a9f2"
+		},
+		{
+			"id": "0a750478-e959-e615-7cbc-9bb1810e1b18",
+			"headers": "",
+			"headerData": [],
+			"url": "{{url}}/product/1000",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "e59292fc-14d0-7f6e-68cd-91c6d2fc8097",
+			"data": null,
+			"dataMode": "params",
+			"name": "Get Product By Id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1511097630421,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"isFromCollection": true,
+			"collectionRequestId": "0a750478-e959-e615-7cbc-9bb1810e1b18",
+			"folder": "b90579f8-5537-e0e2-cc13-7ad8b5b5ea32"
+		},
+		{
+			"id": "25dd5e4f-1265-f99a-e572-7ad052b1fb80",
+			"headers": "name: \ndescription: \nprice: \ncurrency: \namount: \npicture: \n",
+			"headerData": [
+				{
+					"key": "name",
+					"value": "",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "description",
+					"value": "",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "price",
+					"value": "",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "currency",
+					"value": "",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "amount",
+					"value": "",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "picture",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url}}/product/1000",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "PUT",
+			"collectionId": "e59292fc-14d0-7f6e-68cd-91c6d2fc8097",
+			"data": null,
+			"dataMode": "params",
+			"name": "Update product",
+			"description": "Edycja produktu",
+			"descriptionFormat": "html",
+			"time": 1511097741406,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "b90579f8-5537-e0e2-cc13-7ad8b5b5ea32"
+		},
+		{
+			"id": "2b2630f1-b114-b0ab-113d-a06d0f83f9f0",
+			"headers": "",
+			"headerData": [],
+			"url": "{{url}}/product",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "e59292fc-14d0-7f6e-68cd-91c6d2fc8097",
+			"data": null,
+			"dataMode": "params",
+			"name": "All products",
+			"description": "Wszystkie produkty z paginacją\n\n- id, \n- name\n- thumbnail\n- price\n- currency\n- amount",
+			"descriptionFormat": "html",
+			"time": 1511097323374,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"isFromCollection": true,
+			"collectionRequestId": "2b2630f1-b114-b0ab-113d-a06d0f83f9f0",
+			"folder": "b90579f8-5537-e0e2-cc13-7ad8b5b5ea32"
+		},
+		{
+			"id": "5b4ad4db-2bc1-95af-84f0-72a048bc1bec",
+			"headers": "",
+			"headerData": [],
+			"url": "{{url}}/product/1000",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "e59292fc-14d0-7f6e-68cd-91c6d2fc8097",
+			"data": null,
+			"dataMode": "params",
+			"name": "Delete product by id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1511097649944,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"isFromCollection": true,
+			"collectionRequestId": "5b4ad4db-2bc1-95af-84f0-72a048bc1bec",
+			"folder": "b90579f8-5537-e0e2-cc13-7ad8b5b5ea32"
+		},
+		{
+			"id": "7024b37a-1bcc-d249-465f-0d4b2b57da7a",
+			"headers": "name: \n",
+			"headerData": [
+				{
+					"key": "name",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url}}/category/1000",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "PUT",
+			"collectionId": "e59292fc-14d0-7f6e-68cd-91c6d2fc8097",
+			"data": null,
+			"dataMode": "params",
+			"name": "Update category",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1511097969614,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "88e53df9-46bc-7db5-6daa-cca05d8d55f5"
+		},
+		{
+			"id": "8e0dd769-a34f-763c-de1e-182952ab44a9",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost/test",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "e59292fc-14d0-7f6e-68cd-91c6d2fc8097",
+			"data": null,
+			"dataMode": "params",
+			"name": "Test",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1511030114222,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "8f4a829d-1a4f-5e02-b48a-5a634a440c90",
+			"headers": "name: \n",
+			"headerData": [
+				{
+					"key": "name",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url}}/category",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "e59292fc-14d0-7f6e-68cd-91c6d2fc8097",
+			"data": null,
+			"dataMode": "params",
+			"name": "Add category",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1511097926029,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "88e53df9-46bc-7db5-6daa-cca05d8d55f5"
+		},
+		{
+			"id": "ac20e073-da8c-c2b2-2e50-4ce2c03550b3",
+			"headers": "name: \n",
+			"headerData": [
+				{
+					"key": "name",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url}}/category/1000",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "e59292fc-14d0-7f6e-68cd-91c6d2fc8097",
+			"data": null,
+			"dataMode": "params",
+			"name": "Get  category by id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1511098048151,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "88e53df9-46bc-7db5-6daa-cca05d8d55f5"
+		},
+		{
+			"id": "c62f00eb-4383-7f16-3d66-c09b3218ac6d",
+			"headers": "name: \ndescription: \nprice: \ncurrency: \namount: \npicture: \n",
+			"headerData": [
+				{
+					"key": "name",
+					"value": "",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "description",
+					"value": "",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "price",
+					"value": "",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "currency",
+					"value": "",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "amount",
+					"value": "",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "picture",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url}}/product",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "e59292fc-14d0-7f6e-68cd-91c6d2fc8097",
+			"data": null,
+			"dataMode": "params",
+			"name": "Add product",
+			"description": "Dodawanie produktu",
+			"descriptionFormat": "html",
+			"time": 1511097596034,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"isFromCollection": true,
+			"collectionRequestId": "c62f00eb-4383-7f16-3d66-c09b3218ac6d",
+			"folder": "b90579f8-5537-e0e2-cc13-7ad8b5b5ea32"
+		},
+		{
+			"id": "d7399816-18a2-3a7f-1359-97dd2a71db79",
+			"headers": "name: \n",
+			"headerData": [
+				{
+					"key": "name",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{url}}/category/1000",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "e59292fc-14d0-7f6e-68cd-91c6d2fc8097",
+			"data": null,
+			"dataMode": "params",
+			"name": "Delete category by id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1511098113451,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "88e53df9-46bc-7db5-6daa-cca05d8d55f5"
+		},
+		{
+			"id": "e3325adc-a549-c26b-d522-df33484e135a",
+			"headers": "",
+			"headerData": [],
+			"url": "{{url}}/category",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "e59292fc-14d0-7f6e-68cd-91c6d2fc8097",
+			"data": null,
+			"dataMode": "params",
+			"name": "Get All Categories",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1511097883875,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "88e53df9-46bc-7db5-6daa-cca05d8d55f5"
+		}
+	]
+}
