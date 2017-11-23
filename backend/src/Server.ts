@@ -12,6 +12,7 @@ import * as jwt from "express-jwt";
 import {NextFunction, Response, Request} from "express";
 
 import * as router from './Router';
+import * as multer from "multer";
 
 declare global {
     namespace Express {
@@ -56,6 +57,8 @@ export class Server {
 
         this.app.use(express.static(path.join(__dirname, '../public')));
 
+        this.app.use(multer({ dest: path.join(__dirname, '../uploads/') }).any());
+
         // endregion
 
         // region Ustawienia autentykacji tokenem
@@ -73,7 +76,7 @@ export class Server {
             }).unless({
                 path: [
                     '/public/api.yml',
-                    '/users/login',
+                    '/login',
                     '/users'
                 ]
             })

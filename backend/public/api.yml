@@ -1,17 +1,21 @@
-swagger: "2.0"
+openapi: "3.0.0"
 info:
   description: "API do serwerowej części projektu zespołowego w ramach I roku studiów magisterskich zaocznych na kierunku Informatyka na UG"
   version: "1.0.0"
   title: "Projekt zespołowy"
-host: "0.0.0.0:8000"
-basePath: "/"
+
+servers:
+  - url: "0.0.0.0:8000"
+    description: ""
+
 tags:
   - name: "Użytkownicy"
     description: "Osoby korzystające ze sklepu"
   - name: "Operator"
     description: "Osoba zarządzająca sklepem"
-schemes:
-  - "http"
+  - name: "Produkty"
+    description: "Wszystkie przedmioty dostępne w sklepie"
+
 paths:
   /register:
     post:
@@ -20,54 +24,57 @@ paths:
       summary: "Dodanie nowego użytkownika do sklepu"
       description: ""
       operationId: "addUser"
-      consumes:
-        - "application/json"
-      produces:
-        - "application/json"
-      parameters:
-        - in: "body"
-          name: "body"
-          description: "Dane użytkownika który zakłada konto w sklepie"
-          required: true
-          schema:
-            $ref: "#/definitions/User"
+
       responses:
         400:
           description: "Jeśli nazwa użytkownika/email już używane lub dane nie przechodzą walidacji"
-          schema:
-            type: "object"
-            properties:
-              problem:
-                type: "string"
-                example: "duplicated"
-              field:
-                type: "string"
-                example: "username"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  problem:
+                    type: "string"
+                    example: "duplicated"
+                  field:
+                    type: "string"
+                    example: "username"
+
+    parameters:
+      - in: "query"
+        name: "Zapytanie"
+        description: "Dane użytkownika który zakłada konto w sklepie"
+        required: true
+        schema:
+          $ref: "#/components/schemas/User"
+
   /login:
     post:
       tags:
           - "Użytkownicy"
       summary: "Zalogowanie użytkownika"
       description: ""
-      parameters:
-        - in: "body"
-          name: "body"
-          description: "Dane logowania użytkownika"
-          required: true
-          schema:
-            type: "object"
-            properties:
-              username:
-                type: "string"
-                example: "jankowalski"
-              password:
-                type: "string"
-                example: "supertajne"
       responses:
         200:
           description: "Wszystko poszło dobrze, w ciele zwrotki token"
         401:
           description: "Jeśli podano niepoprawne dane do logowania"
+
+    parameters:
+      - in: "query"
+        name: "Zapytanie"
+        description: "Dane logowania użytkownika"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            username:
+              type: "string"
+              example: "jankowalski"
+            password:
+              type: "string"
+              example: "supertajne"
+
   /operator/register:
     post:
       tags:
@@ -75,51 +82,91 @@ paths:
       summary: "Dodanie nowego operatora do sklepu"
       description: ""
       operationId: "addOperator"
-      parameters:
-        - in: "body"
-          name: "body"
-          description: "Dane operatora zakładającego konto"
-          required: true
-          schema:
-            $ref: "#/definitions/User"
       responses:
         400:
           description: "Jeśli nazwa użytkownika/email już używane lub dane nie przechodzą walidacji"
-          schema:
-            type: "object"
-            properties:
-              problem:
-                type: "string"
-                example: "duplicated"
-              field:
-                type: "string"
-                example: "username"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  problem:
+                    type: "string"
+                    example: "duplicated"
+                  field:
+                    type: "string"
+                    example: "username"
+    parameters:
+      - in: "query"
+        name: "Zapytanie"
+        description: "Dane operatora zakładającego konto"
+        required: true
+        schema:
+          $ref: "#/components/schemas/User"
 
+  /product:
+    post:
+      tags:
+          - "Produkty"
+      summary: "Dodanie produktu do katalogu sklepu"
+      description: ""
 
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/Product"
 
-definitions:
-  User:
-    type: "object"
-    properties:
-      username:
-        type: "string"
-      email:
-        type: "string"
-      password:
-        type: "string"
-      firstName:
-        type: "string"
-      lastName:
-        type: "string"
-      street:
-        type: "string"
-      localNumber:
-        type: "string"
-      city:
-        type: "string"
-      postalCode:
-        type: "string"
-      country:
-        type: "string"
-      phone:
-        type: "string"
+      responses:
+        200:
+          description: "Wszystko poszło dobrze"
+        401:
+          description: "Jeśli nie podano tokena"
+        403:
+          description: "Jeśli użytkownik nie ma uprawnień"
+
+components:
+  schemas:
+    User:
+      type: "object"
+      properties:
+        username:
+          type: "string"
+        email:
+          type: "string"
+        password:
+          type: "string"
+        firstName:
+          type: "string"
+        lastName:
+          type: "string"
+        street:
+          type: "string"
+        localNumber:
+          type: "string"
+        city:
+          type: "string"
+        postalCode:
+          type: "string"
+        country:
+          type: "string"
+        phone:
+          type: "string"
+
+    Product:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        description:
+          type: "string"
+        price:
+          type: "number"
+        currency:
+          type: "string"
+        amount:
+          type: "number"
+        picture:
+          type: "string"
+          format: "binary"
