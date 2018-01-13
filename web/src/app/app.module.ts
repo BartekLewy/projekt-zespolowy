@@ -8,13 +8,16 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { RememberPasswordComponent } from './remember-password/remember-password.component';
 
 const appRoutes: Routes = [
   { path: '', component: ProductsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
@@ -24,7 +27,9 @@ const appRoutes: Routes = [
     RegisterComponent,
     LoginComponent,
     ProductsComponent,
-    ContactComponent
+    ContactComponent,
+    PageNotFoundComponent,
+    RememberPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +39,6 @@ const appRoutes: Routes = [
     )
   ],
   providers: [],
-  bootstrap: [AppComponent, CartComponent, ProductsComponent, LoginComponent, RegisterComponent, ContactComponent]
+  bootstrap: [AppComponent, CartComponent, ProductsComponent, LoginComponent, RegisterComponent, ContactComponent, PageNotFoundComponent]
 })
 export class AppModule { }
