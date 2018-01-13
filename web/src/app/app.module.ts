@@ -1,57 +1,38 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { CartComponent } from './cart/cart.component';
 import { RegisterComponent } from './register/register.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { ProductsComponent } from './products/products.component';
-import { CartComponent } from './cart/cart.component';
-import { DiscountComponent } from './discount/discount.component';
-import { HeaderComponent } from './header/header.component';
-
-import { AuthGuard } from "./auth.guard";
-import { UserService } from "./user.service";
-
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
-import { RegulationsComponent } from './regulations/regulations.component'
+import { ContactComponent } from './contact/contact.component';
 
 const appRoutes: Routes = [
-  {
-    component: DashboardComponent,
-    canActivate: [AuthGuard],
-    path: 'dashboard',
-  },
   { path: '', component: ProductsComponent },
+  { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'regulations', component: RegulationsComponent }
+  { path: 'register', component: RegisterComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
+    CartComponent,
     RegisterComponent,
     LoginComponent,
-    DashboardComponent,
     ProductsComponent,
-    CartComponent,
-    DiscountComponent,
-    HeaderComponent,
-    BreadcrumbsComponent,
-    RegulationsComponent
+    ContactComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(
       appRoutes,
-      {enableTracing: true}
-    ),
-    NgbModule.forRoot()
+      { enableTracing: true } // <-- debugging purposes only
+    )
   ],
-  providers: [UserService, AuthGuard],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent, CartComponent, ProductsComponent, LoginComponent, RegisterComponent]
 })
 export class AppModule { }

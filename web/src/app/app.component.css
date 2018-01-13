@@ -1,3 +1,7 @@
+footer {
+    margin-top: 2rem;
+}
 
-
-/*# sourceMappingURL=app.component.css.map */
+footer div {
+    padding: 1rem;
+}
