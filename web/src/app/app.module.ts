@@ -11,6 +11,7 @@ import { ContactComponent } from './contact/contact.component';
 
 const appRoutes: Routes = [
   { path: '', component: ProductsComponent },
+  { path: 'contact', component: ContactComponent },
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent }
@@ -33,6 +34,6 @@ const appRoutes: Routes = [
     )
   ],
   providers: [],
-  bootstrap: [AppComponent, CartComponent, ProductsComponent, LoginComponent, RegisterComponent]
+  bootstrap: [AppComponent, CartComponent, ProductsComponent, LoginComponent, RegisterComponent, ContactComponent]
 })
 export class AppModule { }
