@@ -13,6 +13,7 @@ import {NextFunction, Response, Request} from "express";
 
 import * as router from './Router';
 import * as multer from "multer";
+import * as morgan from "morgan";
 
 declare global {
     namespace Express {
@@ -57,7 +58,7 @@ export class Server {
 
         this.app.use(express.static(path.join(__dirname, '../public')));
 
-        this.app.use(multer({ dest: path.join(__dirname, '../uploads/') }).any());
+        // this.app.use(multer({ dest: path.join(__dirname, '../public/images') }).any());
 
         // endregion
 

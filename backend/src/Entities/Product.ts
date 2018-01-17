@@ -30,6 +30,10 @@ export class Product extends Entity<IProductModel> implements IProduct {
     get picture(): string { return this.data.picture }
     set picture(pic: string) { this.data.picture = pic }
 
+    @IsNotEmpty()
+    get thumbnail(): string { return this.data.thumbnail }
+    set thumbnail(pic: string) { this.data.thumbnail = pic }
+
     static get factory() { return new Product() }
 
     constructor (data?: IProduct) {

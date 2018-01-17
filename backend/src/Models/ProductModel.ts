@@ -29,6 +29,10 @@ let productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    thumbnail: {
+        type: String,
+        required: true
+    },
 });
 
 export let ProductModel = mongoose.model<IProductModel>("Product", productSchema);

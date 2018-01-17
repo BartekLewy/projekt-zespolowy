@@ -5,5 +5,6 @@ export interface IProduct {
     currency: string;
     amount: number;
     picture: string;
+    thumbnail: string;
 }
 
