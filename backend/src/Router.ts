@@ -3,6 +3,7 @@ import {AuthenticationController} from "./Controllers/AuthenticationController";
 import {ProductsController} from "./Controllers/ProductsController";
 import multer = require("multer");
 import * as path from "path";
+import {OrderController} from "./Controllers/OrderController";
 
 export class Router {
     private static imageFilter(req: Express.Request, file: Express.Multer.File, cb: Function) {
@@ -38,5 +39,7 @@ export class Router {
             ProductsController.EditProduct);
 
         router.delete("/product/:id", ProductsController.DeleteProduct);
+
+        router.post("/order", OrderController.AddOrder);
     }
 }
