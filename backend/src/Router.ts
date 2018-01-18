@@ -41,5 +41,8 @@ export class Router {
         router.delete("/product/:id", ProductsController.DeleteProduct);
 
         router.post("/order", OrderController.AddOrder);
+        router.get("/order", OrderController.GetAllOrders);
+        router.get("/order/:id", OrderController.GetOrderById);
+        router.put("/order/change/status/:id", OrderController.ChangeOrderStatus);
     }
 }
