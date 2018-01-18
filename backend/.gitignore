@@ -30,3 +30,4 @@ dist
 .idea/
 *.css
 *.css.map
+public/images/
