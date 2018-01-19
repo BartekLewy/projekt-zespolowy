@@ -1,81 +1,14 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-3">
-      <div class="card">
-          <img class="card-img-top" src="https://www.gry-online.pl/galeria/gry13/3577960.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Grand Theft Auto V (PC)</h5>
-            <p class="card-text">219.99 zł</p>
-            <a href="#" class="btn btn-primary">Add to cart</a>
-          </div>
-        </div>
-    </div>
-
-    <div class="col-sm-3">
+    <div class="row">
+    <div class="col-sm-3" *ngFor="let item of results">
         <div class="card">
-            <img class="card-img-top" src="https://www.gry-online.pl/galeria/gry13/90647438.jpg" alt="Card image cap">
+            <img class="card-img-top" src="{{item.thumbnail}}" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Destiny 2 (PC)</h5>
-              <p class="card-text">159.99 zł</p>
+              <h5 class="card-title">{{item.name}}</h5>
+              <p class="card-text">{{item.price}}</p>
               <a href="#" class="btn btn-primary">Add to cart</a>
             </div>
           </div>
-      </div>
-
-      <div class="col-sm-3">
-          <div class="card">
-            <img class="card-img-top" src="https://www.gry-online.pl/galeria/gry13/13435040.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Assassin's Creed Origin</h5>
-              <p class="card-text">169.99 zł</p>
-              <a href="#" class="btn btn-primary">Add to cart</a>
-            </div>
-          </div>
-      </div>
-
-      <div class="col-sm-3">
-          <div class="card">
-            <img class="card-img-top" src="https://www.gry-online.pl/galeria/gry13/67519291.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Fortnite Battle Royale</h5>
-              <p class="card-text">219.99 zł</p>
-              <a href="#" class="btn btn-primary">Add to cart</a>
-            </div>
-          </div>
-      </div>
-
-      <div class="col-sm-3">
-          <div class="card">
-            <img class="card-img-top" src="https://www.gry-online.pl/galeria/gry13/201584.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Star Wars Battlefront II</h5>
-              <p class="card-text">219.99 zł</p>
-              <a href="#" class="btn btn-primary">Add to cart</a>
-            </div>
-          </div>
-      </div>
-
-      <div class="col-sm-3">
-          <div class="card">
-            <img class="card-img-top" src="https://www.gry-online.pl/galeria/gry13/22829467.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Hello Neighbor</h5>
-              <p class="card-text">219.99 zł</p>
-              <a href="#" class="btn btn-primary">Add to cart</a>
-            </div>
-          </div>
-      </div>
-
-      <div class="col-sm-3">
-          <div class="card">
-            <img class="card-img-top" src="https://www.gry-online.pl/galeria/gry13/415278031.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Call of Duty WWII</h5>
-              <p class="card-text">219.99 zł</p>
-              <a href="#" class="btn btn-primary">Add to cart</a>
-            </div>
-          </div>
-      </div>
-
+    </div>
   </div>
 </div>
