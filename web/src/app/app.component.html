@@ -23,8 +23,8 @@
       </form>
       <form class="form-inline">
         <a routerLink="/cart" class="btn"><i class="fa fa-shopping-cart"></i> Koszyk</a> 
-        <span class="badge badge-pill badge-primary">0</span> 
-        <span class="badge badge-pill badge-success">0.00 zł</span>
+        <span class="badge badge-pill badge-primary">{{productsCount}}</span> 
+        <span class="badge badge-pill badge-success">{{finalPrice | number}}</span>
       </form>
     </nav>
   </div>

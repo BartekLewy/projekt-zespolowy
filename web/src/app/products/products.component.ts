@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { error } from 'util';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-products',
@@ -12,7 +13,7 @@ export class ProductsComponent implements OnInit {
   API = 'http://localhost:8000';
   results = {};
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cartService: CartService) {}
 
   ngOnInit() {
     this.http.get(this.API + '/product').subscribe(
@@ -25,4 +26,8 @@ export class ProductsComponent implements OnInit {
     );
   }
 
+
+  addProduct(product) {
+    this.cartService.addProduct(product);
+  }
 }

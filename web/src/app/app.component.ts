@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CartService } from './cart.service';
+import 'rxjs/add/operator/takeWhile';
+
 
 @Component({
   selector: 'app-root',
@@ -6,17 +9,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private products = [];
 
-  public addToCart(product) {
-    this.products.push(product);
+  private alive = true;
+
+  finalPrice: number;
+  productsCount: number;
+
+  constructor(private cartService: CartService) {
+    cartService.fullPrice$.takeWhile(() => this.alive).subscribe(
+      finalPrice => {
+        this.finalPrice = finalPrice;
+      }
+    );
+
+    cartService.producstCount$.takeWhile(() => this.alive).subscribe(
+      productsCount => {
+        this.productsCount = productsCount;
+      }
+    );
   }
 
-  public getProductsFromCart() {
-    return this.products;
-  }
 
-  public getCountProductsFromCart() {
-    return this.products.length;
-  }
 }
