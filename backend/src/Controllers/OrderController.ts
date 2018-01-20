@@ -18,6 +18,11 @@ export class OrderController {
                 } else {
                     order.populate('products.item', (err: any, populated: any) => {
 
+                        if (err) {
+                            console.log(err);
+                            return res.status(400).json(err);
+                        }
+
                         let sum = 0;
                         for (let product of populated.products) {
                             sum += product.item.price * product.count;
