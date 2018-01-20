@@ -1,0 +1,49 @@
+<div class="container">
+  <h4>Dokończ Twoje zamówienie</h4>
+  <form class="form row" [formGroup]="rForm" (ngSubmit)="addOrder(rForm.value)">
+
+    <div class="form-group col-sm-6">
+      <label for="first-name">Imię (imiona)</label>
+      <input id="first-name" formControlName="firstName" type="text" class="form-control">
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="last-name">Nazwisko</label>
+      <input id="last-name" formControlName="lastName" type="text" class="form-control">
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="street">Ulica</label>
+      <input id="street" formControlName="street" type="text" class="form-control">
+    </div>
+
+    <div class="form-group col-sm-6">
+        <label for="local-number">Numer lokalu</label>
+        <input id="local-number" formControlName="localNumber" type="text" class="form-control">
+    </div>
+
+    <div class="form-group col-sm-6">
+        <label for="city">Miejscowosc</label>
+        <input id="city" formControlName="city" type="text" class="form-control">
+    </div>
+
+    <div class="form-group col-sm-6">
+        <label for="postal-code">Kod pocztowy</label>
+        <input id="postal-code" formControlName="postalCode" type="text" class="form-control">
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" type="email" class="form-control">
+    </div>
+
+    <div class="form-group col-sm-6">
+        <label for="discount-code">Kod rabatowy</label>
+        <input id="discount-code" formControlName="discountCode" type="text" class="form-control">
+    </div>
+
+    <div class="form-group col-sm-12">
+        <button type="submit" class="btn btn-primary">Zamawiam!</button>
+    </div>
+  </form>
+</div>

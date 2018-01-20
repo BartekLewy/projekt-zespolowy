@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CartService } from './cart.service';
 
@@ -14,6 +15,7 @@ import { ContactComponent } from './contact/contact.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RememberPasswordComponent } from './remember-password/remember-password.component';
 import { ProductDetailsComponentComponent } from './product-details-component/product-details-component.component';
+import { OrderComponent } from './order/order.component';
 
 const appRoutes: Routes = [
   { path: '', component: ProductsComponent },
@@ -22,6 +24,7 @@ const appRoutes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'order', component: OrderComponent},
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -35,7 +38,8 @@ const appRoutes: Routes = [
     ContactComponent,
     PageNotFoundComponent,
     RememberPasswordComponent,
-    ProductDetailsComponentComponent
+    ProductDetailsComponentComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
@@ -43,9 +47,19 @@ const appRoutes: Routes = [
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     ),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [CartService],
-  bootstrap: [AppComponent, CartComponent, ProductsComponent, LoginComponent, RegisterComponent, ContactComponent, PageNotFoundComponent]
+  bootstrap: [
+    AppComponent,
+    CartComponent,
+    ProductsComponent,
+    LoginComponent,
+    RegisterComponent,
+    ContactComponent,
+    PageNotFoundComponent,
+    OrderComponent
+  ]
 })
 export class AppModule { }
