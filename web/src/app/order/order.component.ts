@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-order',
@@ -11,7 +13,13 @@ export class OrderComponent implements OnInit {
   rForm: FormGroup;
   post: any;
 
-  constructor(private formBuilder: FormBuilder) {
+  products = [];
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private httpClient: HttpClient,
+    private cartService: CartService
+  ) {
     this.rForm = formBuilder.group({
       'firstName' : [null, Validators.required],
       'lastName' : [null, Validators.required],
@@ -25,6 +33,7 @@ export class OrderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.products = this.cartService.getProducts();
   }
 
   addOrder(order) {
