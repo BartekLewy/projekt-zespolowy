@@ -72,4 +72,10 @@ export class CartService {
     return this.products.length;
   }
 
+
+  public clean() {
+    localStorage.removeItem('products');
+    localStorage.removeItem('productsCount');
+    localStorage.removeItem('price');
+  }
 }

@@ -40,14 +40,29 @@ export class OrderComponent implements OnInit {
   }
 
   addOrder(order) {
-    console.log(order);
 
-    const products = [ 
-    ];
+    const result = [];
+    const ids = [];
 
-    this.products.forEach((value, index) => {
-      const id = value.id || value._id;
-      this.products[id] = {id: id, count: 0 };
+    this.products.forEach(x => {
+      if (ids.indexOf(x.id) < 0) {
+        ids.push(x.id);
+      }
+
+      if (ids.indexOf(x._id) < 0) {
+        ids.push(x._id);
+      }
+    });
+
+    ids.forEach(id => {
+      const res = this.products.filter(x => {
+        if (typeof id !== 'undefined') {
+          return (x.id === id || x._id === id) && id !== 'undefined';
+        }
+      });
+      if (typeof id !== 'undefined') {
+        result.push({id: id, count: res.length});
+      }
     });
 
     const body = {
@@ -59,12 +74,15 @@ export class OrderComponent implements OnInit {
       email: order.email,
       city: order.city,
       phone: order.phone,
-      products: products
+      products: result,
+      discountCode: null, /// na razie można oba zahardkodować na null
+      discountValue: null
     };
+
 
     this.httpClient.post(this.API + '/order', body).subscribe(
       data => {
-        console.log(data);
+        this.cartService.clean();
       },
       err => {
         console.log(err);
