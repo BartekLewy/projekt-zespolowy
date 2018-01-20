@@ -8,7 +8,7 @@ import 'rxjs/add/operator/takeWhile';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   private alive = true;
 
@@ -27,6 +27,11 @@ export class AppComponent {
         this.productsCount = productsCount;
       }
     );
+  }
+
+  ngOnInit() {
+    this.finalPrice = localStorage.getItem('price');
+    this.productsCount = localStorage.getItem('productsCount');
   }
 
 

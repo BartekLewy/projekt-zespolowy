@@ -14,23 +14,11 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.products = this.cartService.getProducts();
-    // const tmpProducts = [];
-    // this.cartService.getProducts().forEach((value, index) => {
-    //   if (tmpProducts[value.id]) {
-    //     tmpProducts[value.id].count++;
-    //   } else {
-    //     tmpProducts[value.id] = {
-    //       name: value.name,
-    //       price: value.price,
-    //       count: 1,
-    //       thumbnail: value.thumbnail
-    //     };
-    //   }
-    // });
+  }
 
-    // tmpProducts.forEach((value, index) => {
-    //   console.log(value);
-    //     this.products.push(value);
-    // });
+
+  removeProduct(product) {
+    // console.log(product);
+       this.cartService.removeProduct(product);
   }
 }

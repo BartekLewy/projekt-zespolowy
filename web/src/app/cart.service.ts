@@ -13,7 +13,15 @@ export class CartService {
   fullPrice$ = this.fullPrice.asObservable();
   producstCount$ = this.productsCount.asObservable();
 
-  constructor() {}
+  constructor() {
+    const products = JSON.parse(localStorage.getItem('products'));
+    products.forEach((value, index) => {
+      this.addProduct(value);
+    });
+
+    this.fullPrice.next(localStorage.getItem('price'));
+    this.productsCount.next(localStorage.getItem('productsCount'));
+  }
 
   public addProduct(product) {
     this.products.push(product);
@@ -23,6 +31,10 @@ export class CartService {
       price += item.price;
     });
 
+    localStorage.setItem('products', JSON.stringify(this.products));
+    localStorage.setItem('price', price);
+    localStorage.setItem('productsCount', this.products.length);
+
     this.fullPrice.next(price);
     this.productsCount.next(this.products.length);
 
@@ -31,11 +43,19 @@ export class CartService {
   public removeProduct(product) {
     this.products.forEach((item, index) => {
       if (product === item) {
-        this.products.slice(index, 1);
+        localStorage.setItem('price', localStorage.getItem('price') - item.price);
+        this.products.splice(index, 1);
       }
     });
+    
+    console.log(this.products);
+
+    localStorage.setItem('products', JSON.stringify(this.products));
+    localStorage.setItem('productsCount', this.products.length);
 
     this.productsCount.next(this.products.length);
+    this.fullPrice.next(localStorage.getItem('price'));
+    
   }
 
   public getProducts() {
