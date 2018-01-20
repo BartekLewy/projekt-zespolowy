@@ -2,11 +2,13 @@
     <div class="row">
     <div class="col-sm-3" *ngFor="let item of results">
         <div class="card">
-            <img class="card-img-top" src="{{item.thumbnail}}" alt="Card image cap">
+            <a [routerLink]="['product', item.id]" [queryParams]="{id: 1}">
+              <img class="card-img-top" src="{{item.thumbnail}}" alt="Card image cap">
+            </a>
             <div class="card-body">
               <h5 class="card-title">{{item.name}}</h5>
-              <p class="card-text">{{item.price}}</p>
-              <a href="#" class="btn btn-primary">Add to cart</a>
+              <p class="card-text">{{item.price}} {{item.currency}}</p>
+              <a href="#" class="btn btn-primary">Dodaj do koszyka</a>
             </div>
           </div>
     </div>

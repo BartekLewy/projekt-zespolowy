@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
+import { CartService } from './cart.service';
+
 import { AppComponent } from './app.component';
 import { CartComponent } from './cart/cart.component';
 import { RegisterComponent } from './register/register.component';
@@ -11,9 +13,11 @@ import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RememberPasswordComponent } from './remember-password/remember-password.component';
+import { ProductDetailsComponentComponent } from './product-details-component/product-details-component.component';
 
 const appRoutes: Routes = [
   { path: '', component: ProductsComponent },
+  { path: 'product/:id', component: ProductDetailsComponentComponent},
   { path: 'contact', component: ContactComponent },
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginComponent },
@@ -30,7 +34,8 @@ const appRoutes: Routes = [
     ProductsComponent,
     ContactComponent,
     PageNotFoundComponent,
-    RememberPasswordComponent
+    RememberPasswordComponent,
+    ProductDetailsComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,7 @@ const appRoutes: Routes = [
     ),
     HttpClientModule
   ],
-  providers: [],
+  providers: [CartService],
   bootstrap: [AppComponent, CartComponent, ProductsComponent, LoginComponent, RegisterComponent, ContactComponent, PageNotFoundComponent]
 })
 export class AppModule { }
