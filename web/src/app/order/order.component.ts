@@ -10,6 +10,8 @@ import { CartService } from '../cart.service';
 })
 export class OrderComponent implements OnInit {
 
+  API = 'http://localhost:8000';
+
   rForm: FormGroup;
   post: any;
 
@@ -28,6 +30,7 @@ export class OrderComponent implements OnInit {
       'postalCode' : [null, Validators.required],
       'email' : [null, Validators.required],
       'city' : [null, Validators.required],
+      'phone': [null, Validators.required],
       'discountCode' : [null],
     });
   }
@@ -38,6 +41,35 @@ export class OrderComponent implements OnInit {
 
   addOrder(order) {
     console.log(order);
+
+    const products = [ 
+    ];
+
+    this.products.forEach((value, index) => {
+      const id = value.id || value._id;
+      this.products[id] = {id: id, count: 0 };
+    });
+
+    const body = {
+      firstName: order.firstName,
+      lastName: order.lastName,
+      street: order.street,
+      localNumber: order.localNumber,
+      postalCode: order.postalCode,
+      email: order.email,
+      city: order.city,
+      phone: order.phone,
+      products: products
+    };
+
+    this.httpClient.post(this.API + '/order', body).subscribe(
+      data => {
+        console.log(data);
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
 }
