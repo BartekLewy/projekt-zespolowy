@@ -13,14 +13,14 @@ export class OrderComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
     this.rForm = formBuilder.group({
-      'firstName' : [null],
+      'firstName' : [null, Validators.required],
       'lastName' : [null, Validators.required],
       'street' : [null, Validators.required],
       'localNumber' : [null, Validators.required],
       'postalCode' : [null, Validators.required],
       'email' : [null, Validators.required],
       'city' : [null, Validators.required],
-      'discountCode' : [null, Validators.required],
+      'discountCode' : [null],
     });
   }
 

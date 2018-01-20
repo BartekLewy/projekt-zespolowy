@@ -1,39 +1,60 @@
 <div class="container">
-  <h4>Dokończ Twoje zamówienie</h4>
+  <h4>Dokończ swoje zamówienie</h4>
   <form class="form row" [formGroup]="rForm" (ngSubmit)="addOrder(rForm.value)">
 
     <div class="form-group col-sm-6">
-      <label for="first-name">Imię (imiona)</label>
+      <label for="first-name">
+        Imię (imiona) 
+        <span *ngIf="!rForm.controls['firstName'].valid && rForm.controls['firstName'].touched" class="badge badge-danger">Pole obowiązkowe</span>
+      </label>
       <input id="first-name" formControlName="firstName" type="text" class="form-control">
     </div>
 
     <div class="form-group col-sm-6">
-      <label for="last-name">Nazwisko</label>
+      <label for="last-name">
+        Nazwisko
+        <span *ngIf="!rForm.controls['lastName'].valid && rForm.controls['lastName'].touched" class="badge badge-danger">Pole obowiązkowe</span>
+      </label>
       <input id="last-name" formControlName="lastName" type="text" class="form-control">
     </div>
 
     <div class="form-group col-sm-6">
-      <label for="street">Ulica</label>
+      <label for="street">
+        Ulica
+        <span *ngIf="!rForm.controls['street'].valid && rForm.controls['street'].touched" class="badge badge-danger">Pole obowiązkowe</span>
+      </label>
       <input id="street" formControlName="street" type="text" class="form-control">
     </div>
 
     <div class="form-group col-sm-6">
-        <label for="local-number">Numer lokalu</label>
+        <label for="local-number">
+          Numer lokalu
+          <span *ngIf="!rForm.controls['localNumber'].valid && rForm.controls['localNumber'].touched" class="badge badge-danger">Pole obowiązkowe</span>
+        </label>
         <input id="local-number" formControlName="localNumber" type="text" class="form-control">
     </div>
 
     <div class="form-group col-sm-6">
-        <label for="city">Miejscowosc</label>
+        <label for="city">
+          Miejscowosc
+          <span *ngIf="!rForm.controls['city'].valid && rForm.controls['city'].touched" class="badge badge-danger">Pole obowiązkowe</span>
+        </label>
         <input id="city" formControlName="city" type="text" class="form-control">
     </div>
 
     <div class="form-group col-sm-6">
-        <label for="postal-code">Kod pocztowy</label>
+        <label for="postal-code">
+          Kod pocztowy
+          <span *ngIf="!rForm.controls['postalCode'].valid && rForm.controls['postalCode'].touched" class="badge badge-danger">Pole obowiązkowe</span>
+        </label>
         <input id="postal-code" formControlName="postalCode" type="text" class="form-control">
     </div>
 
     <div class="form-group col-sm-6">
-      <label for="email">Email</label>
+      <label for="email">
+        Email
+        <span *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched" class="badge badge-danger">Pole obowiązkowe</span>
+      </label>
       <input id="email" formControlName="email" type="email" class="form-control">
     </div>
 
@@ -43,7 +64,7 @@
     </div>
 
     <div class="form-group col-sm-12">
-        <button type="submit" class="btn btn-primary">Zamawiam!</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!rForm.valid">Zamawiam!</button>
     </div>
   </form>
 </div>
