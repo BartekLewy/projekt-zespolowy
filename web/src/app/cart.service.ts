@@ -15,12 +15,18 @@ export class CartService {
 
   constructor() {
     const products = JSON.parse(localStorage.getItem('products'));
-    products.forEach((value, index) => {
-      this.addProduct(value);
-    });
+    if (products !== null) {
+      products.forEach((value, index) => {
+        this.addProduct(value);
+      });
 
-    this.fullPrice.next(localStorage.getItem('price'));
-    this.productsCount.next(localStorage.getItem('productsCount'));
+      this.fullPrice.next(localStorage.getItem('price'));
+      this.productsCount.next(localStorage.getItem('productsCount'));
+    } else {
+      this.fullPrice.next(0);
+      this.productsCount.next(0);
+    }
+
   }
 
   public addProduct(product) {
@@ -47,7 +53,7 @@ export class CartService {
         this.products.splice(index, 1);
       }
     });
-    
+
     console.log(this.products);
 
     localStorage.setItem('products', JSON.stringify(this.products));
@@ -55,7 +61,7 @@ export class CartService {
 
     this.productsCount.next(this.products.length);
     this.fullPrice.next(localStorage.getItem('price'));
-    
+
   }
 
   public getProducts() {
