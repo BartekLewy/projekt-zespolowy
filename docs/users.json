@@ -1,0 +1,33 @@
+/* 1 */
+{
+    "_id" : ObjectId("5a63df6f275b380026fc93a6"),
+    "username" : "string",
+    "email" : "string",
+    "password" : "$2a$12$lkH0CYWrErUetfF9XnLOoOiI1EjUdZF.RD8cTlDu0TPKxwzz1NWze",
+    "firstName" : "string",
+    "lastName" : "string",
+    "street" : "string",
+    "postalCode" : "string",
+    "city" : "string",
+    "country" : "string",
+    "type" : 2,
+    "accountConfirmed" : true,
+    "__v" : 0
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("5a63e030275b380026fc93a9"),
+    "username" : "string2",
+    "email" : "string2",
+    "password" : "$2a$12$jGn3hfF8T2VrA4u12BDWCu81/h/BKehXZm8bY2xi9vjUiIoWKIbvm",
+    "firstName" : "string",
+    "lastName" : "string",
+    "street" : "string",
+    "postalCode" : "string",
+    "city" : "string",
+    "country" : "string",
+    "type" : 2,
+    "accountConfirmed" : true,
+    "__v" : 0
+}
