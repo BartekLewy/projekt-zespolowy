@@ -15,6 +15,8 @@ export class OrderComponent implements OnInit {
   rForm: FormGroup;
   post: any;
 
+  done: boolean;
+
   products = [];
 
   constructor(
@@ -33,6 +35,8 @@ export class OrderComponent implements OnInit {
       'phone': [null, Validators.required],
       'discountCode' : [null],
     });
+
+    this.done = false;
   }
 
   ngOnInit() {
@@ -61,7 +65,7 @@ export class OrderComponent implements OnInit {
         }
       });
       if (typeof id !== 'undefined') {
-        result.push({id: id, count: res.length});
+        result.push({item: id, count: res.length});
       }
     });
 
@@ -79,10 +83,12 @@ export class OrderComponent implements OnInit {
       discountValue: null
     };
 
+    console.log(body);
 
     this.httpClient.post(this.API + '/order', body).subscribe(
       data => {
         this.cartService.clean();
+        this.done = true;
       },
       err => {
         console.log(err);

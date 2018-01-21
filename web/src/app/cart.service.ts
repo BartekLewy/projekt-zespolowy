@@ -77,5 +77,8 @@ export class CartService {
     localStorage.removeItem('products');
     localStorage.removeItem('productsCount');
     localStorage.removeItem('price');
+
+    this.fullPrice.next(0);
+    this.productsCount.next(0);
   }
 }

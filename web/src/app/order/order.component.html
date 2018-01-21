@@ -1,4 +1,8 @@
-<div class="container">
+<div class="container" *ngIf="done">
+  <div class="alert alert-success text-center">Twoje zamówienie zostało zlozone i przyjęte do realizacji!</div>
+</div>
+
+<div class="container" *ngIf="!done">
   <h4>Dokończ swoje zamówienie</h4>
   <form class="form row" [formGroup]="rForm" (ngSubmit)="addOrder(rForm.value)">
 
