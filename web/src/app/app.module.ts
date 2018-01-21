@@ -16,6 +16,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RememberPasswordComponent } from './remember-password/remember-password.component';
 import { ProductDetailsComponentComponent } from './product-details-component/product-details-component.component';
 import { OrderComponent } from './order/order.component';
+import { AdminComponent } from './admin/admin.component';
 
 const appRoutes: Routes = [
   { path: '', component: ProductsComponent },
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     RememberPasswordComponent,
     ProductDetailsComponentComponent,
-    OrderComponent
+    OrderComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

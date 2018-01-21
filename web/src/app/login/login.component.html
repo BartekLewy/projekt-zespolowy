@@ -1,5 +1,8 @@
 <div class="container">
     <h4>Logowanie</h4>
+    <div class="alert alert-danger text-center" *ngIf="status == false">
+        Nieprawidłowe login lub hasło!
+    </div>
     <form class="form" [formGroup]="rForm" (ngSubmit)="loginAction(rForm.value)">
       <div class="form-group">
           <label for="login">Podaj swój login</label>
