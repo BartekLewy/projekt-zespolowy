@@ -1,3 +1,23 @@
-<p>
-  admin works!
-</p>
+<div class="container">
+ <h4>Lista zamówień</h4>
+ <table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Numer zamówienia</th>
+      <th>Imię i nazwisko</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of orders; let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{item._id}}</td>
+      <td>{{item.firstName}} {{item.lastName}}</td>
+      <td class="text-center">
+        <span *ngIf="item.orderStatus == 'in_progress'" class="badge badge-warning">Przyjęto do realizacji</span>
+      </td>
+    </tr> 
+  </tbody>
+ </table>
+</div>

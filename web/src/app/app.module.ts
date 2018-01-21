@@ -25,7 +25,8 @@ const appRoutes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'order', component: OrderComponent},
+  { path: 'order', component: OrderComponent },
+  { path: 'admin', component: AdminComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -61,7 +62,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     ContactComponent,
     PageNotFoundComponent,
-    OrderComponent
+    OrderComponent,
+    AdminComponent
   ]
 })
 export class AppModule { }

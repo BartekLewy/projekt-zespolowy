@@ -26,6 +26,7 @@
     </tbody>
   </table>
   <div class="text-right">
+      <button class="btn btn-warning" (click)="clean()">Wyczysc koszyk</button>
       <button [disabled]="products.length == 0" routerLink="/order" class="text-right btn btn-primary">Zamawiam!</button>
   </div>
 </div>
