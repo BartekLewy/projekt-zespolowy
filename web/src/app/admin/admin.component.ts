@@ -22,9 +22,11 @@ export class AdminComponent implements OnInit {
 
     this.httpClient.get(this.API + '/order').subscribe(
       data => {
-        data.forEach(element => {
-          this.orders.push(element.data);
-        });
+        if (data instanceof Array){
+          data.forEach(element => {
+            this.orders.push(element.data);
+          });
+        }
       }
     );
   }

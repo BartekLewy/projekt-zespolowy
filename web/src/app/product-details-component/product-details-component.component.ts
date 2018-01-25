@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CartService } from '../cart.service';
+import {isNullOrUndefined} from 'util';
 
 @Component({
   selector: 'app-product-details-component',
@@ -22,7 +23,7 @@ export class ProductDetailsComponentComponent implements OnInit {
     if (this.id !== null) {
       this.http.get(this.API + '/product/' + this.id).subscribe(
         response => {
-          this.product = response.data;
+          this.product = (<any>response).data;
           console.log(this.product);
         },
         err => {

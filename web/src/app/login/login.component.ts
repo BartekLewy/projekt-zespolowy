@@ -41,9 +41,9 @@ export class LoginComponent implements OnInit {
 
     this.httpClient.post(this.API + '/login', body).subscribe(
       data => {
-        localStorage.setItem('userToken', data);
+        localStorage.setItem('userToken', data.toString());
         this.status = true;
-        this.router.navigate('/admin');
+        this.router.navigateByUrl('/admin');
       },
       err => {
         this.status = false;

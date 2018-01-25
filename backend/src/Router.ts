@@ -4,6 +4,7 @@ import {ProductsController} from "./Controllers/ProductsController";
 import multer = require("multer");
 import * as path from "path";
 import {OrderController} from "./Controllers/OrderController";
+import {DiscountController} from "./Controllers/DiscountController";
 
 export class Router {
     private static imageFilter(req: Express.Request, file: Express.Multer.File, cb: Function) {
@@ -44,5 +45,10 @@ export class Router {
         router.get("/order", OrderController.GetAllOrders);
         router.get("/order/:id", OrderController.GetOrderById);
         router.put("/order/change/status/:id", OrderController.ChangeOrderStatus);
+
+        router.get("/discount", DiscountController.GetAllDiscountCodes);
+        router.get("/discount/:code", DiscountController.GetDiscountCode);
+        router.post("/discount", DiscountController.GenerateDiscountCode);
+        router.delete("/discount/:code", DiscountController.RemoveDiscountCode);
     }
 }

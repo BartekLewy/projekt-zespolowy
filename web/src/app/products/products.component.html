@@ -3,7 +3,7 @@
     <div class="col-sm-3" *ngFor="let item of results">
         <div class="card">
             <a [routerLink]="['product', item.id]">
-              <img class="card-img-top" src="{{item.thumbnail}}" alt="Card image cap">
+              <img class="card-img-top" src="data:image/png;base64,{{item.thumbnail}}" alt="Card image cap">
             </a>
             <div class="card-body">
               <h5 class="card-title">{{item.name}}</h5>

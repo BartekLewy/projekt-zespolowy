@@ -38,8 +38,8 @@ export class CartService {
     });
 
     localStorage.setItem('products', JSON.stringify(this.products));
-    localStorage.setItem('price', price);
-    localStorage.setItem('productsCount', this.products.length);
+    localStorage.setItem('price', price.toString());
+    localStorage.setItem('productsCount', this.products.length.toString());
 
     this.fullPrice.next(price);
     this.productsCount.next(this.products.length);
@@ -49,7 +49,7 @@ export class CartService {
   public removeProduct(product) {
     this.products.forEach((item, index) => {
       if (product === item) {
-        localStorage.setItem('price', localStorage.getItem('price') - item.price);
+        localStorage.setItem('price', (Number(localStorage.getItem('price')) - item.price).toString());
         this.products.splice(index, 1);
       }
     });
@@ -57,7 +57,7 @@ export class CartService {
     console.log(this.products);
 
     localStorage.setItem('products', JSON.stringify(this.products));
-    localStorage.setItem('productsCount', this.products.length);
+    localStorage.setItem('productsCount', this.products.length.toString());
 
     this.productsCount.next(this.products.length);
     this.fullPrice.next(localStorage.getItem('price'));

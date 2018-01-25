@@ -24,7 +24,7 @@ export class ProductsController {
 
         let filepath = __dirname + "/../../public/images/" + files[0].filename;
         sharp(filepath)
-            .resize(100)
+            .resize(250)
             .withoutEnlargement()
             .png()
             .toBuffer(

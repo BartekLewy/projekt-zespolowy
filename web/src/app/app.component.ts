@@ -30,8 +30,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.finalPrice = localStorage.getItem('price') || 0;
-    this.productsCount = localStorage.getItem('productsCount') || 0;
+    this.finalPrice = Number(localStorage.getItem('price')) || 0;
+    this.productsCount = Number(localStorage.getItem('productsCount')) || 0;
   }
 
 
