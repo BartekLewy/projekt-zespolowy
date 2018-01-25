@@ -14,6 +14,8 @@ export class OrderComponent implements OnInit {
 
   rForm: FormGroup;
   post: any;
+  discountCode = null;
+  discountLoading = false;
 
   done: boolean;
 
@@ -79,8 +81,8 @@ export class OrderComponent implements OnInit {
       city: order.city,
       phone: order.phone,
       products: result,
-      discountCode: null, /// na razie można oba zahardkodować na null
-      discountValue: null
+      discountCode: this.discountCode.code, /// na razie można oba zahardkodować na null
+      discountValue: this.discountCode.value
     };
 
     console.log(body);
@@ -94,6 +96,27 @@ export class OrderComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  loadDiscountCode() {
+    this.rForm.controls['discountCode'].markAsUntouched();
+    if (this.discountCode !== null) {
+        return true;
+    }
+    this.discountLoading = true;
+
+    this.httpClient.get(this.API + '/discount/' + this.rForm.controls['discountCode'].value).subscribe(
+      data => {
+        this.discountLoading = false;
+        this.discountCode = data.data;
+        console.log(data);
+      },
+      err => {
+        this.discountLoading = false;
+        this.discountCode = null;
+      },
+    );
+    return true;
   }
 
 }

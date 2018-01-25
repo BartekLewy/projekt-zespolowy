@@ -61,6 +61,8 @@ export class DiscountController {
             DiscountCode.factory.findOne(DiscountCode, {code: req.params.code}, (err: any, discount: DiscountCode) => {
                 if (err) {
                     return res.status(400).json(err);
+                } if(isNullOrUndefined(discount)) {
+                    return res.status(400).send();
                 } else {
                     return res.status(200).json(discount);
                 }
