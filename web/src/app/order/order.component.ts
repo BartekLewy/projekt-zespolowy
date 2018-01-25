@@ -24,7 +24,7 @@ export class OrderComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private httpClient: HttpClient,
-    private cartService: CartService
+    public cartService: CartService
   ) {
     this.rForm = formBuilder.group({
       'firstName' : [null, Validators.required],
@@ -119,4 +119,13 @@ export class OrderComponent implements OnInit {
     return true;
   }
 
+  getPriceSum() {
+    let price = 0;
+
+    for (let p of this.products) {
+      price += p.price;
+    }
+
+    return price;
+  }
 }
