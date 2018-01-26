@@ -31,14 +31,14 @@ export class OrderComponent implements OnInit {
     public cartService: CartService
   ) {
     this.rForm = formBuilder.group({
-      'firstName' : [null, Validators.required],
-      'lastName' : [null, Validators.required],
-      'street' : [null, Validators.required],
-      'localNumber' : [null, Validators.required],
-      'postalCode' : [null, Validators.required],
-      'email' : [null, Validators.required],
-      'city' : [null, Validators.required],
-      'phone': [null, Validators.required],
+      'firstName' : [null, [Validators.required, Validators.minLength(2)]],
+      'lastName' : [null, [Validators.required, Validators.minLength(2)]],
+      'street' : [null, [Validators.required, Validators.minLength(2)]],
+      'localNumber' : [null, []],
+      'postalCode' : [null, [Validators.required, Validators.pattern(/[0-9]{2}-[0-9]{3}/)]],
+      'email' : [null, [Validators.required, Validators.email]],
+      'city' : [null, [Validators.required, Validators.minLength(2)]],
+      'phone': [null, [Validators.required, Validators.pattern(/[0-9]{9}/)]],
       'discountCode' : [null],
     });
 
@@ -85,9 +85,14 @@ export class OrderComponent implements OnInit {
       city: order.city,
       phone: order.phone,
       products: result,
-      discountCode: this.discountCode != null ? this.discountCode.code : null, /// na razie można oba zahardkodować na null
-      discountValue: this.discountCode != null ? this.discountCode.value : null
+      discountCode: null, /// na razie można oba zahardkodować na null
+      discountValue: null
     };
+
+    if (!isNullOrUndefined(this.discountCode)) {
+      body.discountCode = this.discountCode.data.code;
+      body.discountValue = this.discountCode.data.value;
+    }
 
     console.log(body);
 

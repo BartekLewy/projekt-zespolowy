@@ -1,0 +1,599 @@
+{
+	"info": {
+		"name": "Projekt zespołowy",
+		"_postman_id": "11a62583-1789-ff52-a304-7064d12f6870",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"description": "",
+			"item": [
+				{
+					"name": "All products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8000/product",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"product"
+							]
+						},
+						"description": "Wszystkie produkty z paginacją\n\n- id, \n- name\n- thumbnail\n- price\n- currency\n- amount"
+					},
+					"response": []
+				},
+				{
+					"name": "Add product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authentication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJzY29wZSI6Ik9wZXJhdG9yIiwiaWF0IjoxNTE2NTE3MjkyLCJleHAiOjE1MTY2MDM2OTJ9.Iu5cIHk08ADZ_v0gRDBQjkPyIJ8YtoNbhrZvKw5AtUw"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Call of Duty: WWII - wersja cyfrowa",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Call of Duty: WWII to pierwszoosobowa strzelanka od Sledgehammer Games wydana na PC oraz konsole Xbox One i PlayStation 4. Po wielu odsłonach, których akcja rozgrywała się w czasach współczesnych, tym razem wydarzenia osadzono w realiach II wojny światowej.\n\nKampania fabularna w grze Call of Duty: WWII przedstawia więź między bohaterami opowiadanej historii i umożliwia wzięcie udziału w bitwach doskonale znanych z kart historii. W kolejnych misjach, które można ukończyć również w trybie kooperacji, przenosimy się w różne zakątki globu, by lądować na plaży w Normandii, przeprowadzać ofensywę w Ardenach czy też być uczestnikami marszu na Berlin. Wzorem poprzednich części Call of Duty, również opisywana produkcja zawiera wiele opcji zabawy sieciowej opartej na rywalizacji.\n\nCall of Duty: WWII nie pozwala na automatyczną regenerację zdrowia poprzez chwilowy odpoczynek bohatera. Tym razem autorzy zaoferowali rozwiązanie znane między innymi z pierwszej odsłony cyklu, czyli konieczność podnoszenia apteczek i używania ich w celu odnowienia punktów życia postaci.\n\nCall of Duty: WWII oddaje do dyspozycji graczy bogaty arsenał, w którym znajdziemy wiernie odwzorowane karabiny czy pistolety; oprócz tego będziemy mogli zrobić użytek z innych narzędzi, w tym chociażby miotacza ognia. To właśnie dzięki niemu przetrwamy walcząc na ulicach miast, w lasach, bunkrach oraz wielu innych lokacjach.",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "219.99",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "20",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "currency",
+									"value": "PLN",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "picture",
+									"description": "",
+									"type": "file",
+									"src": "box-call-of-duty-wwii-pc.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/product",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"product"
+							]
+						},
+						"description": "Dodawanie produktu"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/product/1000",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"product",
+								"1000"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete product by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/product/1000",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"product",
+								"1000"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "name",
+								"value": ""
+							},
+							{
+								"key": "description",
+								"value": ""
+							},
+							{
+								"key": "price",
+								"value": ""
+							},
+							{
+								"key": "currency",
+								"value": ""
+							},
+							{
+								"key": "amount",
+								"value": ""
+							},
+							{
+								"key": "picture",
+								"value": ""
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/product/1000",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"product",
+								"1000"
+							]
+						},
+						"description": "Edycja produktu"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"description": "",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"test\",\n\t\"email\": \"scorpide@gmail.com\",\n\t\"password\": \"1234\",\n\t\"firstName\": \"Kacper\",\n\t\"lastName\": \"Debowski\",\n\t\"street\": \"Reymonta\",\n\t\"localNumber\": \"Whatever\",\n\t\"city\": \"Dupa\",\n\t\"postalCode\": \"12-123\",\n\t\"country\": \"pl\",\n\t\"phone\": \"506159508\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8000/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"register"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"test\",\n\t\"password\": \"1234\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8000/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"login"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"description": "",
+			"item": [
+				{
+					"name": "GetAllOrders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8000/order/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"order",
+								""
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstName\": \"imie\",\n    \"lastName\": \"nazwisko\",\n    \"street\": \"test\",\n    \"localNumber\": \"123\",\n    \"city\": \"Gdańsk\",\n    \"postalCode\": \"80-100\",\n    \"email\": \"scorpide@gmail.com\",\n    \"phone\": \"234234234\",\n    \"products\":\n    \t[\n    \t\t{\n\t        \t\"item\": \"5a5f647592e3900d36a2c837\",\n\t        \t\"count\": 1\n    \t\t},\n    \t\t{\n    \t\t\t\"item\": \"5a5fc5078dfda114e5eaa21a\",\n    \t\t\t\"count\": 1\n    \t\t}\n    \t],\n    \t\n    \"discountCode\": null,\n    \"discountValue\": null\n}"
+						},
+						"url": {
+							"raw": "localhost:8000/order",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"order"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8000/order/5a5fc70edc4dbc15324db533",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"order",
+								"5a5fc70edc4dbc15324db533"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Change order status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"status\": \"sent\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8000/order/change/status/5a6439581099c60044357a29",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"order",
+								"change",
+								"status",
+								"5a6439581099c60044357a29"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"description": "",
+			"item": [
+				{
+					"name": "Get All Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/category",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "name",
+								"value": ""
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/category",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "name",
+								"value": ""
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/category/1000",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"1000"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get  category by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "name",
+								"value": ""
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/category/1000",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"1000"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete category by id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "name",
+								"value": ""
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/category/1000",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"1000"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DiscountCode",
+			"description": "",
+			"item": [
+				{
+					"name": "Get all discounts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8000/discount",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"discount"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add discount code",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"code\": \"DUPA\",\n\t\"value\": 1.0\n}"
+						},
+						"url": {
+							"raw": "localhost:8000/discount",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"discount"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get discount code",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8000/discount/DUPA",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"discount",
+								"DUPA"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Remove discount code",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8000/discount/DUPA",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"discount",
+								"DUPA"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"test"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

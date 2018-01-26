@@ -6,6 +6,9 @@ import {IProductModel} from "../Models/ProductModel";
 import {IOrderModel} from "../Models/OrderModel";
 import {isNullOrUndefined} from "util";
 import {IOrder} from "../Interfaces/IOrder";
+import {MailManager} from "../Services/MailManager";
+import {DiscountCode} from "../Entities/DiscountCode";
+import {IDiscountCodeModel} from "../Models/DiscountCodeModel";
 
 export class OrderController {
     static AddOrder (req: Request, res: Response) {
@@ -16,6 +19,11 @@ export class OrderController {
                 if (errors.length > 0) {
                     return res.status(400).json(errors);
                 } else {
+                    if (!isNullOrUndefined(order.discountCode)) {
+                        DiscountCode.factory.remove({code: order.discountCode}, (err: any) => {
+
+                        });
+                    }
                     order.populate('products.item', (err: any, populated: any) => {
 
                         if (err) {
@@ -45,6 +53,11 @@ export class OrderController {
                             if (err) {
                                 return res.status(400).json(err);
                             }
+
+                            let content = "Witaj " + order.firstName + " " + order.lastName + "!<br/>" +
+                                "<br/>Twoje zamówienie numer " + order.id + " zostało złożone. Poinformujemy Cię o wszystkich " +
+                                "zmianach dotyczących twojego zamówienia.<br/><br/>Pozdrawiamy,<br/>Zespół Sklepu z grami";
+                            MailManager.sendMail(order.email, "Złożenie zamówienia", content);
                             return res.status(200).send();
                         });
                     });
@@ -92,6 +105,34 @@ export class OrderController {
             order.orderStatus = req.body.status;
 
             order.persist((err: any, prod: IOrderModel) => {
+                let status = "";
+                if (req.body.status === 'in_progress') status = "W realizacji";
+                if (req.body.status === 'ready_to_send') status = "Gotowe do wysyłki";
+                else {
+                    status = "Wysłane";
+                }
+                let random = (x: number) => {
+                    return Math.floor(Math.random() * Math.floor(x));
+                };
+                let content = "Witaj " + order.firstName + " " + order.lastName + "!<br/>" +
+                    "<br/>Informujemy, że Twoje zamówienie numer " + order.id + " zmieniło status na '" + status + "'.<br/>";
+                    if (req.body.status === 'sent') {
+                        let code = new DiscountCode();
+                        let str = "";
+                        for (let i =0; i<5; i++){
+                            str += "ABCDEFGH123456789"[random(16)];
+                        }
+                        code.code = str;
+                        code.value = 0.2;
+
+                        code.persist((err: any, c: IDiscountCodeModel) => {});
+
+                        content += "Dziękujemy że jesteś z nami. Na dowód tego przesyłamy ten oto jednorazowy kod rabatowy " +
+                            "o wartości " + code.value * 100 + "% na Twoje kolejne zamówienie!<br/> Kod: " + code.code;
+                    }
+
+                    content += "<br/>Pozdrawiam,<br/> Zespół sklepu z grami";
+                MailManager.sendMail(order.email, "Złożenie zamówienia", content);
                 return res.status(200).send();
             })
         })
