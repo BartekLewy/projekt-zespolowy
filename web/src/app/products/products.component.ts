@@ -29,4 +29,26 @@ export class ProductsComponent implements OnInit {
   addProduct(product) {
     this.cartService.addProduct(product);
   }
+
+  isLoggedIn() {
+    return localStorage.getItem("userToken") !== null;
+  }
+
+  deleteProduct(itemId) {
+    this.http.delete(this.API + '/product/' + itemId).subscribe(
+      res => {
+        this.http.get(this.API + '/product').subscribe(
+          data => {
+            this.results = data;
+          },
+          err => {
+            console.log(err);
+          });
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
 }

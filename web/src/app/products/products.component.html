@@ -9,6 +9,7 @@
               <h5 class="card-title">{{item.name}}</h5>
               <p class="card-text">{{item.price}} {{item.currency}}</p>
               <a (click)="addProduct(item)" class="btn btn-primary">Dodaj do koszyka</a>
+              <a *ngIf="isLoggedIn()" class="fa fa-trash" style="color:red;" (click)="deleteProduct(item.id)"></a>
             </div>
           </div>
     </div>
