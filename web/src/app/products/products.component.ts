@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { error } from 'util';
 import { CartService } from '../cart.service';
 
 @Component({
@@ -31,7 +30,7 @@ export class ProductsComponent implements OnInit {
   }
 
   isLoggedIn() {
-    return localStorage.getItem("userToken") !== null;
+    return localStorage.getItem('userToken') !== null;
   }
 
   deleteProduct(itemId) {

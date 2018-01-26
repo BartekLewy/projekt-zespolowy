@@ -1,23 +1,49 @@
 <div class="container">
- <h4>Lista zamówień</h4>
- <table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Numer zamówienia</th>
-      <th>Imię i nazwisko</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of orders; let i = index">
-      <td>{{i + 1}}</td>
-      <td>{{item._id}}</td>
-      <td>{{item.firstName}} {{item.lastName}}</td>
-      <td class="text-center">
-        <span *ngIf="item.orderStatus == 'in_progress'" class="badge badge-warning">Przyjęto do realizacji</span>
-      </td>
-    </tr> 
-  </tbody>
- </table>
+  <ng-container *ngIf="!singleOrder">
+    <h4>Lista zamówień</h4>
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Numer zamówienia</th>
+        <th>Imię i nazwisko</th>
+        <th>Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="order-element" *ngFor="let item of orders; let i = index" (click)="showOrder(item._id)">
+        <td>{{i + 1}}</td>
+        <td>{{item._id}}</td>
+        <td>{{item.firstName}} {{item.lastName}}</td>
+        <td class="text-center">
+          <span *ngIf="item.orderStatus == 'in_progress'" class="badge badge-warning">Przyjęto do realizacji</span>
+          <span *ngIf="item.orderStatus == 'ready_to_send'" class="badge badge-info">Gotowe do wysyłki</span>
+          <span *ngIf="item.orderStatus == 'sent'" class="badge badge-success">Wysłane</span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </ng-container>
+
+  <ng-container *ngIf="singleOrder">
+    <button class="btn btn-default" (click)="singleOrder = false; chosenOrder = null; statusUpdated = false;">Powrót</button>
+    <br/>
+    <h4>Zamówienie {{chosenOrder._id}}</h4>
+    <p>Imię: {{chosenOrder.firstName}}</p>
+    <p>Nazwisko: {{chosenOrder.lastName}}</p>
+    <p>Ulica: {{chosenOrder.street}}</p>
+    <p>Numer lokalu: {{chosenOrder.localNumber}}</p>
+    <p>Kod pocztowy: {{chosenOrder.postalCode}}</p>
+    <p>Miasto: {{chosenOrder.city}}</p>
+    <p>Email: {{chosenOrder.email}}</p>
+    <p>Numer telefonu: {{chosenOrder.phone}}</p>
+    <p *ngIf="statusUpdated" class="alert alert-success">Status zaktualizowano pomyślnie</p>
+    <p>Status zamówienia:
+      <select class="form-control" (change)="chosenOrder.orderStatus = $event.target.value">
+        <option [selected]="chosenOrder.orderStatus === 'in_progress'" value="in_progress">W realizacji</option>
+        <option [selected]="chosenOrder.orderStatus === 'ready_to_send'" value='ready_to_send'>Gotowe do wysyłki</option>
+        <option [selected]="chosenOrder.orderStatus === 'sent'" value="sent">Wysłane</option>
+      </select>
+      <button class="btn btn-primary" (click)="updateStatus()">Zaktualizuj status</button></p>
+  </ng-container>
 </div>

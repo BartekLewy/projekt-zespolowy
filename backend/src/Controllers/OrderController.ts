@@ -77,7 +77,7 @@ export class OrderController {
                 return res.status(404).json("order_not_found");
             }
 
-            order.orderStatus = req.params.status;
+            order.orderStatus = req.body.status;
 
             order.persist((err: any, prod: IOrderModel) => {
                 return res.status(200).send();
