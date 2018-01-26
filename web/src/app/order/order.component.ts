@@ -108,7 +108,7 @@ export class OrderComponent implements OnInit {
     this.httpClient.get(this.API + '/discount/' + this.rForm.controls['discountCode'].value).subscribe(
       data => {
         this.discountLoading = false;
-        this.discountCode = data.data;
+        this.discountCode = data;
         console.log(data);
       },
       err => {

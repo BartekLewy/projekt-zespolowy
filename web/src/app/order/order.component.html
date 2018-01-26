@@ -74,7 +74,7 @@
         <label for="discount-code">Kod rabatowy</label>
         <input id="discount-code" formControlName="discountCode" type="text" class="form-control">
         <div class="form-group col-sm-6" *ngIf="rForm.controls['discountCode'].value && rForm.controls['discountCode'].value.length > 0">
-          <p *ngIf="!discountLoading && discountCode !== null">Kod przyjęty! Zniżka -{{discountCode.value * 100}}%</p>
+          <p *ngIf="!discountLoading && discountCode !== null">Kod przyjęty! Zniżka -{{discountCode.data.value * 100}}%</p>
           <p *ngIf="!discountLoading && discountCode === null">Kod nieprawidłowy!</p>
           <p *ngIf="discountLoading">Proszę czekać...</p>
         </div>
@@ -86,8 +86,8 @@
     <div class="form-group col-sm-12">
       <app-cart [summary]="true"></app-cart>
       <p>Suma: {{getPriceSum()}} zł</p>
-      <p *ngIf="discountCode !== null">Zniżka: -{{discountCode.value * getPriceSum()}} zł</p>
-      <p *ngIf="discountCode !== null">Do zapłaty w sumie: {{getPriceSum() - discountCode.value * getPriceSum()}} zł</p>
+      <p *ngIf="discountCode !== null">Zniżka: -{{discountCode.data.value * getPriceSum()}} zł</p>
+      <p *ngIf="discountCode !== null">Do zapłaty w sumie: {{getPriceSum() - discountCode.data.value * getPriceSum()}} zł</p>
       <button type="submit" class="btn btn-primary" [disabled]="!rForm.valid">Zamawiam!</button>
     </div>
   </form>

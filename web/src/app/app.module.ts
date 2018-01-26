@@ -17,6 +17,7 @@ import { RememberPasswordComponent } from './remember-password/remember-password
 import { ProductDetailsComponentComponent } from './product-details-component/product-details-component.component';
 import { OrderComponent } from './order/order.component';
 import { AdminComponent } from './admin/admin.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 const appRoutes: Routes = [
   { path: '', component: ProductsComponent },
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'order', component: OrderComponent },
   { path: 'admin', component: AdminComponent },
+  { path: 'add/product', component: AddProductComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -42,7 +44,8 @@ const appRoutes: Routes = [
     RememberPasswordComponent,
     ProductDetailsComponentComponent,
     OrderComponent,
-    AdminComponent
+    AdminComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,

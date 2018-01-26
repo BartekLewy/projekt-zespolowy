@@ -34,5 +34,12 @@ export class AppComponent implements OnInit {
     this.productsCount = Number(localStorage.getItem('productsCount')) || 0;
   }
 
+  isLoggedIn() {
+    return localStorage.getItem('userToken') !== null;
+  }
+
+  logout() {
+    localStorage.removeItem('userToken');
+  }
 
 }
