@@ -7,8 +7,10 @@
             </a>
             <div class="card-body">
               <h5 class="card-title">{{item.name}}</h5>
-              <p class="card-text">{{item.price}} {{item.currency}}</p>
-              <a (click)="addProduct(item)" class="btn btn-primary">Dodaj do koszyka</a>
+              <p class="card-text">{{item.price}} zł</p>
+              <p class="card-text">Dostępna ilość: {{item.amount}}</p>
+              <a *ngIf="item.amount > 0" (click)="addProduct(item)" class="btn btn-primary">Dodaj do koszyka</a>
+              <p *ngIf="item.amount == 0" style="color:red">Produkt niedostępny!</p>
               <a *ngIf="isLoggedIn()" class="fa fa-trash" style="color:red;" (click)="deleteProduct(item.id)"></a>
             </div>
           </div>

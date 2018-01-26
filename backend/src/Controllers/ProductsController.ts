@@ -62,6 +62,7 @@ export class ProductsController {
                         id: prod.id,
                         name: prod.name,
                         price: prod.price,
+                        amount: prod.amount,
                         thumbnail: prod.thumbnail
                     });
                 }

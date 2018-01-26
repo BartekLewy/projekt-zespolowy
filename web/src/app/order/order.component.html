@@ -80,7 +80,7 @@
         </div>
     </div>
 
-    <ng-container *ngIf="rForm.controls['discountCode'].touched && rForm.controls['discountCode'].value.length > 0 && loadDiscountCode()"></ng-container>
+    <ng-container *ngIf="rForm.controls['discountCode'].touched && rForm.controls['discountCode'].value && rForm.controls['discountCode'].value.length > 0 && loadDiscountCode()"></ng-container>
 
 
     <div class="form-group col-sm-12">
@@ -88,6 +88,8 @@
       <p>Suma: {{getPriceSum()}} zł</p>
       <p *ngIf="discountCode !== null">Zniżka: -{{discountCode.data.value * getPriceSum()}} zł</p>
       <p *ngIf="discountCode !== null">Do zapłaty w sumie: {{getPriceSum() - discountCode.data.value * getPriceSum()}} zł</p>
+
+      <p *ngIf="tooMuchError" class="alert alert-danger">Błąd - brak tyle produktu: {{errorName}} w magazynie! Ilość dostępnych sztuk: {{errorAmount}}</p>
       <button type="submit" class="btn btn-primary" [disabled]="!rForm.valid">Zamawiam!</button>
     </div>
   </form>

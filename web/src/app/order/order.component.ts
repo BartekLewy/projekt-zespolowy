@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CartService } from '../cart.service';
+import {isNullOrUndefined} from 'util';
 
 @Component({
   selector: 'app-order',
@@ -16,6 +17,9 @@ export class OrderComponent implements OnInit {
   post: any;
   discountCode = null;
   discountLoading = false;
+  tooMuchError = false;
+  errorName = null;
+  errorAmount = null;
 
   done: boolean;
 
@@ -81,8 +85,8 @@ export class OrderComponent implements OnInit {
       city: order.city,
       phone: order.phone,
       products: result,
-      discountCode: this.discountCode.code, /// na razie można oba zahardkodować na null
-      discountValue: this.discountCode.value
+      discountCode: this.discountCode != null ? this.discountCode.code : null, /// na razie można oba zahardkodować na null
+      discountValue: this.discountCode != null ? this.discountCode.value : null
     };
 
     console.log(body);
@@ -93,6 +97,11 @@ export class OrderComponent implements OnInit {
         this.done = true;
       },
       err => {
+        if (!isNullOrUndefined(err.error.too_much)) {
+          this.tooMuchError = true;
+          this.errorName = err.error.too_much;
+          this.errorAmount = err.error.amount_available;
+        }
         console.log(err);
       }
     );

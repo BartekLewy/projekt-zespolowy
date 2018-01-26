@@ -26,7 +26,19 @@ export class OrderController {
                         let sum = 0;
                         for (let product of populated.products) {
                             sum += product.item.price * product.count;
+
+                            if (product.item.amount - product.count < 0) {
+                               return res.status(400).json({
+                                  too_much: product.item.name,
+                                  amount_available: product.item.amount
+                               });
+                            }
+                            product.item.amount -= product.count;
+                            let prod = new Product(product.item);
+                            prod.persist((err: any, res: IProductModel) => {
+                            });
                         }
+
                         order.orderValue = sum;
 
                         order.persist((err, prod: IOrderModel) => {
